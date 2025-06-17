@@ -166,7 +166,7 @@ def main() -> None:
     video_path = generate_video(row["id"], caption=row["audio_script"])
     update_sheet(worksheet, row_idx, str(video_path))
     safe_print(f"Pipeline completed for {row['id']}")
-
+    print(f"Pipeline completed for {row['id']}")
 
 if __name__ == "__main__":
     main()
