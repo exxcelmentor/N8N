@@ -1,11 +1,3 @@
-import os
-from typing import List, Tuple
-import openai
-from dotenv import load_dotenv
-
-load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
 PROMPT_TEMPLATE = (
     "You are a creative social media assistant. "
     "Given the following challenge description, generate a short caption "
