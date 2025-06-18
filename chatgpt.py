@@ -1,15 +1,3 @@
-"""ChatGPT utilities to generate video captions and hashtags.
-The OpenAI API key is loaded from `config.OPENAI_API_KEY`.
-"""
-
-from typing import List, Tuple
-
-import openai
-
-import config
-
-openai.api_key = config.OPENAI_API_KEY
-
 PROMPT_TEMPLATE = (
     "You are a creative social media assistant. "
     "Given the following challenge description, generate a short caption "
@@ -42,20 +30,3 @@ def generate_caption_and_hashtags(challenge: str) -> Tuple[str, List[str]]:
             tags = line.split(":", 1)[1].strip()
             hashtags = [tag.strip() for tag in tags.split() if tag.startswith("#")]
     return caption, hashtags
-
-
-def main() -> None:
-    """CLI entry for generating captions and hashtags."""
-    import argparse
-
-    parser = argparse.ArgumentParser(description="Generate caption and hashtags")
-    parser.add_argument("challenge", help="Challenge description")
-    args = parser.parse_args()
-
-    caption, tags = generate_caption_and_hashtags(args.challenge)
-    print(f"Caption: {caption}")
-    print("Hashtags:", " ".join(tags))
-
-
-if __name__ == "__main__":
-    main()
